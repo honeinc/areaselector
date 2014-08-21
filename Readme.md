@@ -11,7 +11,14 @@
 
 ## API
 
+## CHANGES
+0.0.2
+-----
+* Fix a dependency issue
 
+0.0.1
+-----
+* Initial commit
 
 ## License
 

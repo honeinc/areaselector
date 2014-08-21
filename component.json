@@ -2,9 +2,11 @@
   "name": "areaselector",
   "repo": "andyburke/areaselector",
   "description": "An area selector, primarily for use with images.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "keywords": [],
-  "dependencies": {},
+  "dependencies": {
+    "andyburke/node-extend": "1.2.2"
+  },
   "development": {},
   "license": "MIT",
   "main": "index.js",
