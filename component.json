@@ -1,8 +1,8 @@
 {
   "name": "areaselector",
-  "repo": "andyburke/areaselector",
+  "repo": "honeinc/areaselector",
   "description": "An area selector, primarily for use with images.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "keywords": [],
   "dependencies": {
     "andyburke/node-extend": "1.2.2"

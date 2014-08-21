@@ -178,15 +178,13 @@ Object.defineProperties( AreaSelector.prototype, {
     selection: {
         get: function() {
             return this._selection.getScaled( this._scale );
-        },
-        writeable: false
+        }
     },
     
     unscaledSelection: {
         get: function() {
             return this._selection;
-        },
-        writable: false
+        }
     }
 } );
 
@@ -194,79 +192,106 @@ AreaSelector.prototype._initElements = function() {
     var self = this;
 
     self.container = div();
-    self.area.css.position = 'absolute';
-    self.area.css.left = 0;
-    self.area.css.top = 0;
-    self.area.css.right = 0;
-    self.area.css.bottom = 0;
+    self.container.style.position = 'absolute';
+    self.container.style.left = '0px';
+    self.container.style.top = '0px';
+    self.container.style.right = '0px';
+    self.container.style.bottom = '0px';
+    self.container.style.overflow = 'hidden';
 
     self.area = div();
-    self.area.css.position = 'absolute';
-    self.area.css.left = 0;
-    self.area.css.top = 0;
-    self.area.css.right = 0;
-    self.area.css.bottom = 0;
-    self.area.css.border = self.options.borderWidth + 'px solid ' + self.options.borderColor;
+    self.area.style.position = 'absolute';
+    self.area.style.left = '0px';
+    self.area.style.top = '0px';
+    self.area.style.width = '0px';
+    self.area.style.height = '0px';
+    self.area.style.border = self.options.borderWidth + 'px solid ' + self.options.borderColor;
+    self.area.style.cursor = 'move';
+    self.area.style.zIndex = 1;
     self.container.appendChild( self.area );
     
     // handles
-    var negMarginOffset = '-' + ( self.options.handleSize / 2 ) + 'px';
+    var negMarginOffset = '-' + ( 1 + ( self.options.handleSize / 2 ) ) + 'px';
     
     var nw = div();
-    nw.css.position = 'absolute';
-    nw.css.left = 0;
-    nw.css.top = 0;
-    nw.css.marginTop = negMarginOffset;
-    nw.css.marginLeft = negMarginOffset;
+    nw.style.position = 'absolute';
+    nw.style.left = '0px';
+    nw.style.top = '0px';
+    nw.style.width = self.options.handleSize + 'px';
+    nw.style.height = self.options.handleSize + 'px';
+    nw.style.marginTop = negMarginOffset;
+    nw.style.marginLeft = negMarginOffset;
+    nw.style.cursor = 'nwse-resize';
 
     var n = div();
-    n.css.position = 'absolute';
-    n.css.left = '50%';
-    n.css.top = 0;
-    n.css.marginTop = negMarginOffset;
-    n.css.marginLeft = negMarginOffset;
+    n.style.position = 'absolute';
+    n.style.left = '50%';
+    n.style.top = '0px';
+    n.style.width = self.options.handleSize + 'px';
+    n.style.height = self.options.handleSize + 'px';
+    n.style.marginTop = negMarginOffset;
+    n.style.marginLeft = negMarginOffset;
+    n.style.cursor = 'ns-resize';
 
     var ne = div();
-    ne.css.position = 'absolute';
-    ne.css.right = 0;
-    ne.css.top = 0;
-    ne.css.marginTop = negMarginOffset;
-    ne.css.marginRight = negMarginOffset;
+    ne.style.position = 'absolute';
+    ne.style.right = '0px';
+    ne.style.top = '0px';
+    ne.style.width = self.options.handleSize + 'px';
+    ne.style.height = self.options.handleSize + 'px';
+    ne.style.marginTop = negMarginOffset;
+    ne.style.marginRight = negMarginOffset;
+    ne.style.cursor = 'nesw-resize';
 
     var e = div();
-    e.css.position = 'absolute';
-    e.css.right = 0;
-    e.css.top = '50%';
-    e.css.marginTop = negMarginOffset;
-    e.css.marginRight = negMarginOffset;
+    e.style.position = 'absolute';
+    e.style.right = '0px';
+    e.style.top = '50%';
+    e.style.width = self.options.handleSize + 'px';
+    e.style.height = self.options.handleSize + 'px';
+    e.style.marginTop = negMarginOffset;
+    e.style.marginRight = negMarginOffset;
+    e.style.cursor = 'ew-resize';
 
     var se = div();
-    se.css.position = 'absolute';
-    se.css.right = 0;
-    se.css.bottom = 0;
-    se.css.marginBottom = negMarginOffset;
-    se.css.marginRight = negMarginOffset;
+    se.style.position = 'absolute';
+    se.style.right = '0px';
+    se.style.bottom = '0px';
+    se.style.width = self.options.handleSize + 'px';
+    se.style.height = self.options.handleSize + 'px';
+    se.style.marginBottom = negMarginOffset;
+    se.style.marginRight = negMarginOffset;
+    se.style.cursor = 'nwse-resize';
 
     var s = div();
-    nw.css.position = 'absolute';
-    nw.css.left = '50%';
-    nw.css.bottom = 0;
-    nw.css.marginBottom = negMarginOffset;
-    nw.css.marginLeft = negMarginOffset;
+    s.style.position = 'absolute';
+    s.style.left = '50%';
+    s.style.bottom = '0px';
+    s.style.width = self.options.handleSize + 'px';
+    s.style.height = self.options.handleSize + 'px';
+    s.style.marginBottom = negMarginOffset;
+    s.style.marginLeft = negMarginOffset;
+    s.style.cursor = 'ns-resize';
 
     var sw = div();
-    nw.css.position = 'absolute';
-    nw.css.left = 0;
-    nw.css.bottom = 0;
-    nw.css.marginBottom = negMarginOffset;
-    nw.css.marginLeft = negMarginOffset;
+    sw.style.position = 'absolute';
+    sw.style.left = '0px';
+    sw.style.bottom = '0px';
+    sw.style.width = self.options.handleSize + 'px';
+    sw.style.height = self.options.handleSize + 'px';
+    sw.style.marginBottom = negMarginOffset;
+    sw.style.marginLeft = negMarginOffset;
+    sw.style.cursor = 'nesw-resize';
 
     var w = div();
-    nw.css.position = 'absolute';
-    nw.css.left = 0;
-    nw.css.top = '50%';
-    nw.css.marginTop = negMarginOffset;
-    nw.css.marginLeft = negMarginOffset;
+    w.style.position = 'absolute';
+    w.style.left = '0px';
+    w.style.top = '50%';
+    w.style.width = self.options.handleSize + 'px';
+    w.style.height = self.options.handleSize + 'px';
+    w.style.marginTop = negMarginOffset;
+    w.style.marginLeft = negMarginOffset;
+    w.style.cursor = 'ew-resize';
 
     self.handles = {
         nw: nw,
@@ -282,7 +307,7 @@ AreaSelector.prototype._initElements = function() {
     Object.keys( self.handles ).forEach( function( handleKey ) {
         var handle = self.handles[ handleKey ];
         
-        handle.css.border = '1px solid ' + self.options.borderColor;
+        handle.style.border = '1px solid ' + self.options.borderColor;
 
         self.area.appendChild( handle );
     } );
@@ -291,14 +316,14 @@ AreaSelector.prototype._initElements = function() {
     
     if ( self.options.mask ) {
         self.mask = div();
-        self.mask.css.position = 'absolute';
-        self.mask.css.borderColor = self.options.maskColor;
-        self.mask.css.borderWidth = 0;
-        self.mask.css.borderStyle = 'solid';
-        self.mask.css.left = 0;
-        self.mask.css.top = 0;
-        self.mask.css.right = 0;
-        self.mask.css.bottom = 0;
+        self.mask.style.position = 'absolute';
+        self.mask.style.outlineColor = self.options.maskColor;
+        self.mask.style.outlineStyle = 'solid';
+        self.mask.style.outlineWidth = '10000px';
+        self.mask.style.left = '0px';
+        self.mask.style.top = '0px';
+        self.mask.style.width = '0px';
+        self.mask.style.height = '0px';
         self.container.appendChild( self.mask );
     }
     
@@ -343,20 +368,15 @@ AreaSelector.prototype.setSelection = function( left, top, right, bottom, unscal
 AreaSelector.prototype.update = function() {
     var self = this;
 
-    self.area.css.left = self._selection.left;
-    self.area.css.top = self._selection.top;
-    self.area.css.right = self._selection.right;
-    self.area.css.bottom = self._selection.bottom;
+    self.area.style.left = self._selection.left + 'px';
+    self.area.style.top = self._selection.top + 'px';
+    self.area.style.width = self._selection.width + 'px';
+    self.area.style.height = self._selection.height + 'px';
     
     if ( self.mask ) {
-        self.mask.css.left = self.area.css.left;
-        self.mask.css.top = self.area.css.top;
-        self.mask.css.right = self.area.css.right;
-        self.mask.css.bottom = self.area.css.bottom;
-        
-        self.mask.css.borderLeftWidth = self.area.css.left;
-        self.mask.css.borderTopWidth = self.area.css.top;
-        self.mask.css.borderRightWidth = self.area.css.right;
-        self.mask.css.borderBottomWidth = self.area.css.bottom;
+        self.mask.style.left = ( self._selection.left - 1 ) + 'px';
+        self.mask.style.top = ( self._selection.top - 1 ) + 'px';
+        self.mask.style.width = ( self._selection.width + 2 )+ 'px';
+        self.mask.style.height = ( self._selection.height + 2 ) + 'px';
     }
 };

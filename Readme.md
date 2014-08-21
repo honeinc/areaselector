@@ -12,6 +12,10 @@
 ## API
 
 ## CHANGES
+0.0.3
+-----
+* Various fixes to get rendering working properly
+
 0.0.2
 -----
 * Fix a dependency issue
