@@ -1,0 +1,14 @@
+{
+  "name": "areaselector",
+  "repo": "andyburke/areaselector",
+  "description": "An area selector, primarily for use with images.",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {},
+  "development": {},
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ]
+}
